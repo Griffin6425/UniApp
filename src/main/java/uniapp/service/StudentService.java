@@ -28,6 +28,9 @@ public class StudentService {
         return s.getEnrolments();
     }
 
+    /**
+     * Enrol subject by student ID (for CLI)
+     */
     public void enrolSubject(String studentId, int subjectId) {
         Student s = requireStudent(studentId);
         if (s.getEnrolments().size() >= 4) throw new IllegalStateException("Cannot enrol more than 4 subjects");
@@ -39,6 +42,21 @@ public class StudentService {
         EnrolledSubject es = new EnrolledSubject(idGenerator.nextEnrolmentId(), mark, subject);
         s.addEnrolment(es);
         studentRepository.upsert(s);
+    }
+
+    /**
+     * Enrol subject using existing Student object (for GUI with ObservableList)
+     */
+    public void enrolSubject(Student student, int subjectId) {
+        if (student.getEnrolments().size() >= 4) throw new IllegalStateException("Cannot enrol more than 4 subjects");
+        Subject subject = subjectRepository.findById(subjectId);
+        if (subject == null) throw new IllegalArgumentException("Subject not found");
+        boolean already = student.getEnrolments().stream().anyMatch(es -> es.getSubject().getId() == subjectId);
+        if (already) throw new IllegalStateException("Already enrolled in this subject");
+        int mark = 25 + random.nextInt(76); // 25..100
+        EnrolledSubject es = new EnrolledSubject(idGenerator.nextEnrolmentId(), mark, subject);
+        student.addEnrolment(es);  // ← Manipulate the incoming object directly and the ObservableList will notify the UI!
+        studentRepository.upsert(student);
     }
 
     public void removeSubject(String studentId, int subjectId) {

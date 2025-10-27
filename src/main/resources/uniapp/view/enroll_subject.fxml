@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="uniapp.controller.EnrollSubjectController"
+      spacing="20" style="-fx-padding: 20; -fx-background-color: #f5f5f5;">
+
+    <!-- Title -->
+    <Label text="Enroll in Subject" 
+           style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <!-- Available Subjects List -->
+    <VBox spacing="10">
+        <Label text="Available Subjects:" 
+               style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+        <ListView fx:id="subjectListView" prefHeight="300" 
+                  style="-fx-background-color: white;"/>
+    </VBox>
+
+    <!-- Buttons -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button fx:id="enrollButton" text="Enroll" onAction="#handleEnroll"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 30;"/>
+        <Button fx:id="cancelButton" text="Cancel" onAction="#handleCancel"
+                style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 30;"/>
+    </HBox>
+
+</VBox>

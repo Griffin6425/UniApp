@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="uniapp.controller.LoginController"
+      alignment="CENTER" spacing="30"
+      style="-fx-background-color: #FFFFFF; -fx-padding: 50;">
+
+    <!-- Title -->
+    <Label text="UniApp" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #1B1B1B;"/>
+
+    <!-- Login Form -->
+    <VBox spacing="20" style="-fx-background-color: #FFFFFF; -fx-padding: 40; -fx-border-color: #E5E5E5; -fx-border-width: 1; -fx-border-radius: 4; -fx-background-radius: 4;" maxWidth="380">
+
+        <!-- Username Field -->
+        <VBox spacing="8">
+            <Label text="Email" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #2E2E2E;"/>
+            <TextField fx:id="usernameField" promptText="name@company.com"
+                       style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #CCCCCC; -fx-border-width: 1; -fx-border-radius: 4; -fx-background-color: #FFFFFF; -fx-background-radius: 4;"/>
+        </VBox>
+
+        <!-- Password Field -->
+        <VBox spacing="8">
+            <Label text="Password" style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #2E2E2E;"/>
+            <PasswordField fx:id="passwordField" promptText="Enter your password"
+                          style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #CCCCCC; -fx-border-width: 1; -fx-border-radius: 4; -fx-background-color: #FFFFFF; -fx-background-radius: 4;"/>
+        </VBox>
+
+        <!-- Buttons -->
+        <VBox spacing="12" alignment="CENTER">
+            <Button fx:id="loginButton" text="Sign in" onAction="#handleLogin" maxWidth="Infinity"
+                    style="-fx-background-color: #FF3621; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 600; -fx-padding: 12 24; -fx-background-radius: 4; -fx-cursor: hand;"/>
+            <Button fx:id="registerButton" text="Create account" onAction="#handleRegister" maxWidth="Infinity"
+                    style="-fx-background-color: transparent; -fx-text-fill: #2E2E2E; -fx-font-size: 14px; -fx-font-weight: 600; -fx-padding: 12 24; -fx-border-color: #CCCCCC; -fx-border-width: 1; -fx-border-radius: 4; -fx-background-radius: 4; -fx-cursor: hand;"/>
+            <Button text="Admin Login" onAction="#handleAdminLogin" styleClass="btn-secondary" />
+        </VBox>
+    </VBox>
+
+    <!-- Footer -->
+    <Label text="© 2025 UniApp" style="-fx-font-size: 11px; -fx-text-fill: #999999;"/>
+</VBox>

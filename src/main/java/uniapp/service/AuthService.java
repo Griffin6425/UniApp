@@ -61,6 +61,15 @@ public class AuthService {
         s.changePassword(newPassword);
         studentRepository.upsert(s);
     }
+    
+    public void changePassword(String email, String currentPassword, String newPassword) {
+        Student s = studentRepository.findByEmail(email);
+        if (s == null) throw new IllegalArgumentException("User not found");
+        if (!s.getPassword().equals(currentPassword)) throw new IllegalArgumentException("Current password is incorrect");
+        if (!Validator.isValidPassword(newPassword)) throw new IllegalArgumentException("Invalid password format");
+        s.changePassword(newPassword);
+        studentRepository.upsert(s);
+    }
 }
 
 
